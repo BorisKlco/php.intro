@@ -7,7 +7,7 @@ services:
     restart: always
     working_dir: /var/www
     volumes:
-      - ../src:/var/www
+      - ../src:/var/www/default
       - ../../csv-format:/var/www/csv
   nginx:
    image: nginx:1.27-alpine
@@ -16,6 +16,6 @@ services:
    ports:
     - "8000:80"
    volumes:
-    - ../src:/var/www
+    - ../src:/var/www/default
     - ../../csv-format:/var/www/csv
     - ./nginx:/etc/nginx/conf.d
