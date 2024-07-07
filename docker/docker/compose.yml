@@ -8,6 +8,7 @@ services:
     working_dir: /var/www
     volumes:
       - ../src:/var/www
+      - ../../csv-format:/var/www/csv
   nginx:
    image: nginx:1.27-alpine
    container_name: nginx
@@ -16,4 +17,5 @@ services:
     - "8000:80"
    volumes:
     - ../src:/var/www
+    - ../../csv-format:/var/www/csv
     - ./nginx:/etc/nginx/conf.d
