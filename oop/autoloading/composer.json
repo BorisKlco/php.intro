@@ -1,0 +1,10 @@
+{
+    "name": "root/autoloading",
+    "description": "composer learning",
+    "autoload": {
+        "psr-4": {
+            "PaymentGateway\\": "PaymentGateway/"
+        }
+    },
+    "require": {}
+}
