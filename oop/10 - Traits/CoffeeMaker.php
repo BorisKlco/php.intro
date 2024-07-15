@@ -4,6 +4,6 @@ class CoffeeMaker
 {
     public function makeCoffee()
     {
-        echo static::class . 'making coffe <br>' . PHP_EOL;
+        echo static::class . ' making coffee <br>' . PHP_EOL;
     }
 }
