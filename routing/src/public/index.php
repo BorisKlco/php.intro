@@ -8,18 +8,8 @@ echo '</pre>';
 
 $router = new App\Router();
 
-$router->register(
-    '/',
-    function () {
-        echo "Home";
-    }
-);
-
-$router->register(
-    '/info',
-    function () {
-        echo "info";
-    }
-);
+$router
+    ->register('/', [App\Classes\Home::class, 'index'])
+    ->register('/info', [App\Classes\Info::class, 'index']);
 
 echo $router->resolve($_SERVER['REQUEST_URI']);
