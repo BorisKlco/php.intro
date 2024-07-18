@@ -15,3 +15,7 @@ $router
     ->post('/info/contact', [App\Classes\Info::class, 'store']);
 
 echo $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+
+session_start();
+
+phpinfo();
