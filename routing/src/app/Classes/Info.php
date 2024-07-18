@@ -19,6 +19,7 @@ class Info
     {
         $contact = $_POST['contact'];
 
+        echo 1;
         setcookie(
             'contact',
             $contact,
