@@ -6,6 +6,15 @@ class Home
 {
     public function index(): string
     {
-        return 'Home';
+        $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
+        var_dump($_SESSION);
+        return '<br> Home - <a href="/unset">unset</a> <br>' . $_SESSION['count'] . '<br>';
+    }
+
+    public function unset(): string
+    {
+        unset($_SESSION['count']);
+        var_dump($_SESSION);
+        return '<br> <a href="../">back</a> <br>' . '<br>';
     }
 }
