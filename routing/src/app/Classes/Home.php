@@ -8,7 +8,7 @@ class Home
     {
         $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
         var_dump($_SESSION);
-        return '<br> Home - <a href="/unset">unset</a> <br>' . $_SESSION['count'] . '<br>';
+        return '<br> Home - <a href="/unset">unset</a> <br>' . $_SESSION['count'] . '<br> <a href="/info">Info</a>';
     }
 
     public function unset(): string
