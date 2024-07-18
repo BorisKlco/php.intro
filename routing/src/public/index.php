@@ -13,6 +13,7 @@ session_start();
 $router
     ->get('/', [App\Classes\Home::class, 'index'])
     ->get('/unset', [App\Classes\Home::class, 'unset'])
+    ->post('/upload', [App\Classes\Home::class, 'upload'])
     ->get('/info', [App\Classes\Info::class, 'index'])
     ->get('/info/contact', [App\Classes\Info::class, 'contact'])
     ->post('/info/contact', [App\Classes\Info::class, 'store']);
