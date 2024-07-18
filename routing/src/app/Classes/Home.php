@@ -39,8 +39,8 @@ class Home
 
         $arr = [];
         $count = count($_FILES['file']['name']);
-        for ($i=0; $i < $count; $i++){
-            if(!$_FILES['file']['error'][$i]){
+        for ($i = 0; $i < $count; $i++) {
+            if (!$_FILES['file']['error'][$i]) {
                 $arr[$i] = [
                     "name" => $_FILES['file']['name'][$i],
                     "tmp" => $_FILES['file']['tmp_name'][$i],
@@ -48,10 +48,10 @@ class Home
             }
         }
 
-        foreach ($arr as $file){
+        foreach ($arr as $file) {
             $filePath = STORAGE . '/' . $file['name'];
             $fileTmp = $file['tmp'];
-            move_uploaded_file($fileTmp,$filePath);
+            move_uploaded_file($fileTmp, $filePath);
             echo '<pre>';
             var_dump($file);
             echo '<pre>';
@@ -60,7 +60,7 @@ class Home
             var_dump(pathinfo($filePath));
             echo 'END OF FILE ' . $file['name'];
         }
-        
+
         echo '<pre>';
         var_dump($_FILES['file']);
         echo '<pre> <br>';
