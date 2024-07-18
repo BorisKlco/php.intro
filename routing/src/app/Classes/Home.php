@@ -17,6 +17,7 @@ class Home
         Home - <a href="/unset">unset</a>
         {$_SESSION['count']}  
         <a href="/info">Info</a>
+        <a href="/routes">Routes</a>
 
         <form action="/upload" method="post" enctype="multipart/form-data" >
         <input type="file" name="file[]" multiple />

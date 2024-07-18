@@ -24,9 +24,11 @@ class Router
         return $this->register('POST', $route, $action);
     }
 
-    public function routes():array
+    public function routes():void
     {
-        return $this->routes;
+        echo '<pre>';
+        var_dump($this->routes);
+        echo '<pre>';
     }
 
     public function resolve(string $requestUri, string $method)
