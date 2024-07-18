@@ -36,8 +36,8 @@ class Home
     public function upload(): string
     {
 
-        $count = count($_FILES['file']['name']);
         $arr = [];
+        $count = count($_FILES['file']['name']);
         for ($i=0; $i < $count; $i++){
             if(!$_FILES['file']['error'][$i]){
                 $arr[$i] = [
@@ -48,11 +48,16 @@ class Home
         }
 
         foreach ($arr as $file){
-            $fileName = STORAGE . '/' . $file['name'];
+            $filePath = STORAGE . '/' . $file['name'];
             $fileTmp = $file['tmp'];
-            move_uploaded_file($fileTmp,$fileName);
+            move_uploaded_file($fileTmp,$filePath);
             echo '<pre>';
             var_dump($file);
+            echo '<pre>';
+            var_dump(pathinfo($fileTmp));
+            echo '<pre>';
+            var_dump(pathinfo($filePath));
+            echo 'END OF FILE ' . $file['name'];
         }
         
         echo '<pre>';
