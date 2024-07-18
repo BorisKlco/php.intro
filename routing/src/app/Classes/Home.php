@@ -18,8 +18,8 @@ class Home
         {$_SESSION['count']}  
         <a href="/info">Info</a>
 
-        <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file"/>
+        <form action="/upload" method="post" enctype="multipart/form-data" >
+        <input type="file" name="file[]" multiple />
         <button type="submit">Upload</button>
         </form>
         HTML;
@@ -35,8 +35,28 @@ class Home
 
     public function upload(): string
     {
+
+        $count = count($_FILES['file']['name']);
+        $arr = [];
+        for ($i=0; $i < $count; $i++){
+            if(!$_FILES['file']['error'][$i]){
+                $arr[$i] = [
+                    "name" => $_FILES['file']['name'][$i],
+                    "tmp" => $_FILES['file']['tmp_name'][$i],
+                ];
+            }
+        }
+
+        foreach ($arr as $file){
+            $fileName = STORAGE . '/' . $file['name'];
+            $fileTmp = $file['tmp'];
+            move_uploaded_file($fileTmp,$fileName);
+            echo '<pre>';
+            var_dump($file);
+        }
+        
         echo '<pre>';
-        var_dump($_FILES);
+        var_dump($_FILES['file']);
         echo '<pre> <br>';
         echo 'End of file dump <br>';
         return $this->index();

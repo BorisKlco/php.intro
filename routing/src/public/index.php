@@ -2,6 +2,8 @@
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
+define("STORAGE", __DIR__ . '/../storage');
+
 // echo '<pre>';
 // print_r($_SERVER);
 // echo '</pre>';
