@@ -23,4 +23,4 @@ $router
 
 echo $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 
-// phpinfo();
+phpinfo();
