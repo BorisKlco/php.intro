@@ -3,11 +3,9 @@
 require_once __DIR__ . "/../vendor/autoload.php";
 
 define("STORAGE", __DIR__ . '/../storage');
+define("ENV_SECRET", __DIR__ . '/../secret');
 
-// echo '<pre>';
-// print_r($_SERVER);
-// echo '</pre>';
-
+$env = new App\Classes\Env();
 $router = new App\Router();
 
 session_start();
@@ -23,4 +21,4 @@ $router
 
 echo $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 
-phpinfo();
+// phpinfo();
