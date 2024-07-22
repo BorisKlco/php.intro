@@ -1,0 +1,1 @@
+<form action="/info/contact" method="post"><label>contact </label><input type="text" name="contact" /> <br> <a href="../">Home</a>

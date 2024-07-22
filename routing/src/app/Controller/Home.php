@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Classes;
+namespace App\Controller;
+
+use App\View;
 
 class Home
 {
-    public function index(): string
+    public function index(): View
     {
         $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
         echo '<pre>';
@@ -13,25 +15,16 @@ class Home
         echo '<pre>';
         var_dump($_COOKIE);
         echo '<pre> <br>';
-        $form = <<<HTML
-        Home - <a href="/unset">unset</a>
-        {$_SESSION['count']}  
-        <a href="/info">Info</a>
-        <a href="/routes">Routes</a>
+        echo $_SESSION['count'] . '<br>';
 
-        <form action="/upload" method="post" enctype="multipart/form-data" >
-        <input type="file" name="file[]" multiple />
-        <button type="submit">Upload</button>
-        </form>
-        HTML;
-        return $form;
+        return View::make('index');
     }
 
-    public function unset(): string
+    public function unset(): View
     {
         unset($_SESSION['count']);
         var_dump($_SESSION);
-        return '<br> <a href="../">back</a> <br>' . '<br>';
+        return View::make('unset');
     }
 
     public function upload(): string

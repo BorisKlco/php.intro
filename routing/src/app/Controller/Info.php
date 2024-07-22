@@ -1,25 +1,26 @@
 <?php
 
-namespace App\Classes;
+namespace App\Controller;
+
+use App\View;
 
 class Info
 {
-    public function index(): string
+    public function index(): View
     {
         var_dump($_SESSION);
-        return '<br>' . '<a href="../">Home</a> <br> <a href="info/contact">contact</a>';
+        return View::make('info/index');
     }
 
     public function contact(): string
     {
-        return '<form action="/info/contact" method="post"><label>contact </label><input type="text" name="contact" /> <br> <a href="../">Home</a>';
+        return View::make('info/contact');
     }
 
     public function store(): string
     {
         $contact = $_POST['contact'];
 
-        echo 1;
         setcookie(
             'contact',
             $contact,
