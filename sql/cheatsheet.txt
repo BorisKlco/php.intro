@@ -1,0 +1,38 @@
+SELECT
+LIMIT
+WHERE  NOT =, !=, <>, 
+AND, OR, XOR, ( )
+WHERE x IS NULL, IS NOT NULL
+x LIKE '%something%'
+x LIKE '%_omething%'
+range <, >, <= ,>=
+BETWEEN x AND y
+ORDER BY x ASC, DESC
+----------------------------------------
+-Aggregate Functions:
+COUNT, AVG, MIN, MAX, SUM, DISTINCT
+SELECT AVG(x) FROM y --> ROUND(AVG(), 2)  
+SELECT x AS "custom name"
+COUNT(*) = count rows
+----------------------------------------
+-Relationship:
+One to one
+One to many
+Many to many
+-Entity Relationship Diagrams(ET Diagram):
+https://imgur.com/cSFnFA6
+----------------------------------------
+Subqueries:
+SELECT "title" FROM "books"
+WHERE "publisher_id" = (
+      SELECT "id" FROM "publishers"
+      WHERE "puublisher" = "Name"
+);
+IN (in set, more, range): 
+SELECT "title" FROM "books" WHERE "id" IN (
+    SELECT "book_id" FROM "authored"
+    WHERE "author_id" = (
+        SELECT "id" FROM "authors" WHERE "name" = "name"
+     )
+):
+
