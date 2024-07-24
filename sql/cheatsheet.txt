@@ -103,3 +103,42 @@ ALTER TABLE x
     ADD COLUMN ...
     RENAME COLUMN ... TO ...
     DROP COLUMN ...
+----------------------------------------
+Writing: 
+--------------------
+INSERT INTO table (column, ...)
+VALUES
+(value0, ...);
+DELETE FROM x WHERE y IS NULL;
+FOREIGN KEY("some_id") REFERENCES "something"("id")
+Foreign key Constraints:
+ON DELETE SET NULL
+ON DELETE SET DEFAULT
+ON DELETE CASCADE (delete on id deletation)
+Update:
+--------------------
+UPDATE tableSET col0 = val, ...
+WHERE condition;
+UPDATE "created" SET "artist_id" = (
+    SELECT "id" FROM "artists"
+    WHERE "name" = 'Artist Name'
+)
+WHERE "collection_id" = (
+    SELECT "id" from "collections"
+    WHERE "title" = 'song name'
+);
+Triggers:
+--------------------
+CREATE TRIGGER name
+AFTER/BEFORE INSERT/UPDATE OF column/DELETE ON table
+FOR EACH ROW
+BEGIN
+...;
+END;
+CREATE TRIGGER "sell"
+BEGORE DELETE ON "collections"
+FOR EACH ROW
+BEGIN
+    INSERT INTO "transactions" ("title", "action")
+    VALUES (OLD."title", 'sold');
+END;
