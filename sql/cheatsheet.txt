@@ -35,4 +35,19 @@ SELECT "title" FROM "books" WHERE "id" IN (
         SELECT "id" FROM "authors" WHERE "name" = "name"
      )
 ):
-
+----------------------------------------
+INNER,LEFT,RIGHT,FULL, NATURAL JOIN
+SELECT * FROM "sea_lions"
+LEFT JOIN "migrations" ON "migrations"."id" = "sea_lions"."id";
+----------------------------------------
+SETS:
+A INTERSECT B / A∩B={x∣x∈A and x∈B}
+A UNION B / A∪B={x∣x∈A or x∈B}
+A EXCEPT B / A−B={x∣x∈A and x∉B}
+----------------------------------------
+GROUPS:
+SELECT "book_id", AVG("rating") AS "avg_rating"
+FROM "ratings"
+GROUP BY "book_id";
+HAVING "average rating" > 4.0 (having = where for groups)
+ORDER BY "avg_rating" DESC;
