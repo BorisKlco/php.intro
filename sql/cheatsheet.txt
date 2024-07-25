@@ -195,3 +195,9 @@ SELECT "id", "origin", "destination", 'Anon' AS "rider"
 FROM "riders";
 -------------------- 
 Triggers with Views:
+CREATE TRIGGER name
+INSTEAD OF DELETE ON view
+FOR EATCH ROW
+BEGIN
+  ...;
+END;
