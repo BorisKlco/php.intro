@@ -197,7 +197,41 @@ FROM "riders";
 Triggers with Views:
 CREATE TRIGGER name
 INSTEAD OF DELETE ON view
-FOR EATCH ROW
+FOR EACH ROW
 BEGIN
   ...;
 END;
+
+CREATE TRIGGER "insert_when_exist"
+INSTED OF INSERT ON "current_collections"
+FOR EACH ROW
+WHEN NEW."accession_num" IN (
+  SELECT "accession_num" FROM "collections"
+)
+BEGIN
+  UPDATE "collections" SET "deleted" = 0
+  WHERE "accession_num" = NEW."accession_num";
+END;
+----------------------------------------
+Optimizing: 
+-------------------- 
+CREATE INDEX "title_idndex" ON "movies" ("title");
+
+EXPLAIN QUERY PLAN
+SELECT * FROM "movies" WHERE "title" = 'Cars';
+Partial Index
+-------------------- 
+CREATE INDEX name
+ON table (col0,..)
+WHERE condition;
+-------------------- 
+Vacuum
+-------------------- 
+Concurrency:
+Transaction, ACID
+BEGIN TRANSACTION;
+...
+COMMIT/ROLLBACK;
+-------------------- 
+Lock: UNLOCKED, SHARED, EXCLUSIVE
+BEGIN EXCLUSIVE TRANSACTION;
