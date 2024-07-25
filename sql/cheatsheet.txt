@@ -274,3 +274,44 @@ CREATE TABLE `swipes` (
 
 ALTER TABLE `stations`
 MODIFY `line` ENUM('blue,'green','orange','red','silver') NOT NULL;
+--------------------
+Stored Procedures:
+CREATE PROCEDURE name
+BEGIN
+...
+END;
+
+delimeter //
+CREATE PROCEDURE `curr_collection`()
+BEGIN
+SELECT `title`
+FROM `collections` WHERE `deleted` = 0;
+END//
+delimeter;
+
+CALL `curr_collection`();
+-------------------- 
+PostgreSQL: 
+\l - show dbs
+\c "db" - connect db
+\dt - show tables
+\d "table" - describe table
+\q
+-------------------- 
+Replication:
+Single-Leader, Multi-Leader, Leaderless
+Follower = Read Replica
+Sharding
+--------------------
+Access Control:
+CREATE USER 'usr' IDENTIFIED BY 'psw';
+privilages: ALL, CREATE, INSERT, SELECT, UPDATE, DELETE
+GRANT privilages ON ... TO usr;
+REVOKE privilages ON ... FROM usr;
+--------------------
+Prepared statement:
+PREPARE `name`
+FROM `SELECT * FROM `table`
+WHERE `id` = ?`;
+SET @id=1;
+EXECUTE `name` USING @id;
