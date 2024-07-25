@@ -142,3 +142,56 @@ BEGIN
     INSERT INTO "transactions" ("title", "action")
     VALUES (OLD."title", 'sold');
 END;
+----------------------------------------
+Viewing: 
+-------------------- 
+Simplifying, Aggregating, Paritioning, Securing
+-------------------- 
+Simplifying:
+CREATE VIEW name AS
+SELECT ...;
+
+CREATE VIEW "longlist" AS
+SELECT "name", "title" FROM "authors"
+JOIN "authors" ON "authors"."id" = "authored"."author_id"
+JOIN "books" ON "books"."id" = "authored"."book_id";
+-------------------- 
+Aggregating:
+CREATE VIEW "avrg_book_ratings" AS
+SELECT "book_id", "title", "year", ROUND(AVG("rating"), 2) AS "rating"
+FROM "ratings"
+JOIN "books" ON "ratings"."book_id" = "books"."id"
+GROUP BY "book_id";
+-------------------- 
+Temporary Views:
+CREATE TEMPORARY VIEW "name" AS
+SELECT "year", ROUND(AVG("rating"), 2) AS "rating" FROM "avrg_book_ratings"
+GROUP BY "year";
+-------------------- 
+CTE - Common Table Expression:
+WITH name AS (
+  SELECT ...
+), ... 
+SELECT ... FROM name;
+
+WITH "avrg_book_ratings" AS (
+  SELECT "book_id", "title", "year", ROUND(AVG("rating"), 2) AS "rating"
+  FROM "ratings"
+  JOIN "books" ON "ratings"."book_id" = "books"."id"
+  GROUP BY "book_id"
+)
+SELECT "year", ROUND(AVG("rating"), 2) AS "rating"
+FROM "avrg_book_ratings"
+GROUP BY "year";
+-------------------- 
+Paritioning:
+CREATE VIEW "2022" AS
+SELECT "id", "title" FROM "books"
+WHERE "year" = 2022;
+-------------------- 
+Securing:
+CREATE VIEW "view" AS
+SELECT "id", "origin", "destination", 'Anon' AS "rider"
+FROM "riders";
+-------------------- 
+Triggers with Views:
