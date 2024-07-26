@@ -8,10 +8,14 @@ use PDO;
 class Home
 {
     public function index(): View
-       
     {   
         echo '<pre>';
         $db = new PDO('mysql:host=db;dbname=my_db', 'root', 'tazkeheslo');
+        $q = 'SELECT * FROM users';
+        $r = $db->query($q);
+        foreach($r as $item){
+            echo $item["name"] . ' ' . $item["email"] . '<br>';
+        };
         var_dump($db);
         $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
         echo '<pre>';
