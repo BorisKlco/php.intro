@@ -11,7 +11,7 @@ class Home
        
     {   
         echo '<pre>';
-        $db = new PDO('mysql:host=sql;dbname=my_db', 'root', 'root1');
+        $db = new PDO('mysql:host=db;dbname=my_db', 'root', 'tazkeheslo');
         var_dump($db);
         $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
         echo '<pre>';

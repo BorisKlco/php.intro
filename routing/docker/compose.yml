@@ -23,7 +23,7 @@ services:
     container_name: sql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: tazkeheslo
     ports:
       - 3306:3306
     volumes:
