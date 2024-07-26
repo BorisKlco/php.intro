@@ -3,11 +3,16 @@
 namespace App\Controller;
 
 use App\View;
+use PDO;
 
 class Home
 {
     public function index(): View
-    {
+       
+    {   
+        echo '<pre>';
+        $db = new PDO('mysql:host=sql;dbname=my_db', 'root', 'root1');
+        var_dump($db);
         $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
         echo '<pre>';
         var_dump($_SESSION);
