@@ -8,12 +8,22 @@ use PDO;
 class Home
 {
     public function index(): View
-    {   
+    {
         echo '<pre>';
-        $db = new PDO('mysql:host=db;dbname=my_db', 'root', 'tazkeheslo');
+        try {
+            $db = new PDO(
+                'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB'],
+                $_ENV['DB_USER'],
+                $_ENV['DB_PASS']
+            );
+        } catch (\Throwable $th) {
+            http_response_code(404);
+            echo 'db ';
+            return View::make('error/404');
+        }
         $q = 'SELECT * FROM users';
         $r = $db->query($q);
-        foreach($r as $item){
+        foreach ($r as $item) {
             echo $item["name"] . ' ' . $item["email"] . '<br>';
         };
         var_dump($db);

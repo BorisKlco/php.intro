@@ -1,8 +1,12 @@
 <?php
 
+
 require_once __DIR__ . "/../vendor/autoload.php";
 
 use App\View;
+
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
 
 define("STORAGE", __DIR__ . '/../storage');
 define("VIEW_PATH", __DIR__ . '/../views');
@@ -24,7 +28,7 @@ $router
 
 try {
     echo $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
-} catch (\App\Exceptions\RouteNotFound $e){
+} catch (\App\Exceptions\RouteNotFound $e) {
     http_response_code(404);
     echo View::make('error/404');
 }

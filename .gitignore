@@ -1,1 +1,3 @@
 routing/docker/storage/*
+routing/src/.env
+routing/src/vendor/*
