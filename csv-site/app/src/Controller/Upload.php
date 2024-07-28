@@ -1,19 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Controller;
 
-class Uplaod
+class Upload
 {
-    public function upload(): string
+    public function store(array $files): string
     {
 
         $arr = [];
-        $count = count($_FILES['file']['name']);
+        $count = count($files['file']['name']);
         for ($i = 0; $i < $count; $i++) {
-            if (!$_FILES['file']['error'][$i]) {
+            if (!$files['file']['error'][$i]) {
                 $arr[$i] = [
-                    "name" => $_FILES['file']['name'][$i],
-                    "tmp" => $_FILES['file']['tmp_name'][$i],
+                    "name" => $files['file']['name'][$i],
+                    "tmp" => $files['file']['tmp_name'][$i],
                 ];
             }
         }
@@ -32,7 +32,7 @@ class Uplaod
         }
 
         echo '<pre>';
-        var_dump($_FILES['file']);
+        var_dump($files['file']);
         echo '<pre> <br>';
         echo 'End of file dump <br>';
         return 'ok';

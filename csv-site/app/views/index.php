@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV Upload</title>
+    <title>CSV Upload - <? echo $header ?></title>
     <link rel="stylesheet" href="static/main.css">
 </head>
 
@@ -16,8 +16,12 @@
             <li><a href="/edit">Edit</a></li>
         </ul>
     </nav>
-    <h1>csv upload</h1>
-    <?php include $content ?>
+    <main>
+        <h1 class="title"><? echo $header ?></h1>
+        <div class="main">
+            <?php include $content ?>
+        </div>
+    </main>
 
 </body>
 

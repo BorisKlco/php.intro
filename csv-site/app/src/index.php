@@ -4,6 +4,7 @@ namespace App;
 
 require_once __DIR__ . "/../vendor/autoload.php";
 define("VIEW_PATH", __DIR__ . '/../views');
+define("STORAGE", __DIR__ . '/../storage');
 
 $router = new Router();
 
@@ -11,6 +12,7 @@ $router
     ->get('/', [Controller\Home::class, 'index'])
     ->get('/add', [Controller\Home::class, 'add'])
     ->get('/edit', [Controller\Home::class, 'edit'])
+    ->post('/upload', [Controller\Home::class, 'upload'])
     ->get('/auth/login', [Controller\Auth::class, 'login'])
     ->get('/auth/register', [Controller\Auth::class, 'register'])
     ->get('/debug', [Router::class, 'routes']);
