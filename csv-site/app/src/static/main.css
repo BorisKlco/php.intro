@@ -40,13 +40,35 @@ nav a:hover {
     background-color: #575757;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table tr th,
+table tr td {
+    padding: 5px;
+    border: 1px #eee solid;
+}
+
+tfoot tr th,
+tfoot tr td {
+    font-size: 20px;
+}
+
+tfoot tr th {
+    text-align: right;
+}
+
 .title,
 .main {
     text-align: center;
     margin: 2rem auto;
 }
 
-.section-add {
+.section-add,
+.section-home {
     display: flex;
     justify-content: center;
     margin-top:4rem;

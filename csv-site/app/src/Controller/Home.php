@@ -30,11 +30,13 @@ class Home
         ]);
     }
 
-    public function upload()
+    public function upload(): View
     {
         $upload = new Upload();
         $upload
             ->store($_FILES)
             ->process();
+
+        return $this->index();
     }
 }
