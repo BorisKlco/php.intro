@@ -3,10 +3,20 @@
 namespace App;
 
 require_once __DIR__ . "/../vendor/autoload.php";
+
 define("VIEW_PATH", __DIR__ . '/../views');
 define("STORAGE", __DIR__ . '/../storage');
 
+$dotenv = \Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
 $router = new Router();
+$db = new DB([
+    'host' => $_ENV['DB_HOST'],
+    'db' => $_ENV['DB'],
+    'usr' => $_ENV['DB_USER'],
+    'psw' => $_ENV['DB_PASS'],
+]);
 
 $router
     ->get('/', [Controller\Home::class, 'index'])

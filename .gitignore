@@ -3,3 +3,4 @@ routing/src/.env
 routing/src/vendor/*
 csv-site/docker/db/*
 csv-site/app/.env
+csv-site/app/vendor/*

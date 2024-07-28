@@ -22,19 +22,8 @@ class Upload
             $filePath = STORAGE . '/' . $file['name'];
             $fileTmp = $file['tmp'];
             move_uploaded_file($fileTmp, $filePath);
-            echo '<pre>';
-            var_dump($file);
-            echo '<pre>';
-            var_dump(pathinfo($fileTmp));
-            echo '<pre>';
-            var_dump(pathinfo($filePath));
-            echo 'END OF FILE ' . $file['name'];
         }
 
-        echo '<pre>';
-        var_dump($files['file']);
-        echo '<pre> <br>';
-        echo 'End of file dump <br>';
         return 'ok';
     }
 }
