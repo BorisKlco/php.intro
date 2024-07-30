@@ -12,3 +12,36 @@ class Status
         self::DECLINED => 'Declined',
     ];
 }
+
+// No scaler value
+// $status->name;
+// $status->value;
+enum StatusEnum
+{
+    case PAID;
+    case PENDING;
+    case DECLINED;
+
+    public function toString(): string
+    {
+        return match ($this) {
+            self::PAID => 'Paid',
+            self::PENDING => 'Pending',
+            self::DECLINED => 'Declined'
+        };
+    }
+}
+
+enum StatusIntEnum: int
+{
+    case PAID = 1;
+    case PENDING = 2;
+    case DECLINED = 3;
+}
+
+enum StatusIntEnum: string
+{
+    case PAID = 'paid';
+    case PENDING = 'pending';
+    case DECLINED = 'declined';
+}
